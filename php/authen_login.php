@@ -20,10 +20,11 @@
       $password = md5($password);
       $result = mysqli_query($conn,"select * from login where password='$password' AND username='$username' AND usertype='$usertype'");
       $rows = mysqli_num_rows($result);
-      $flog->info($rows);
+
       if ($rows == 1) {
         $_SESSION['login_user']=$username;
         $_SESSION['user_type']=$usertype;
+        $flog->info('User login : ' . $username);
         header("location: /../index.html");
       }else{
         $error = "somethings went wrong here";

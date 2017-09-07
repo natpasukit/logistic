@@ -19,14 +19,9 @@
   // Create Logger Chanel for each use
   $flog = new Logger('front_log'); // Log
   // $blog = new Logger('back_log'); //
-
+  $file_handler = new \Monolog\Handler\StreamHandler("../logs/app.log");
   // Log handler [ Handler is handler where log output goes and keep ]
-  // $logger->pushHandler(new StreamHandler(__DIR__.'/../log/my_app.log', Logger::DEBUG)); // File log
   $flog->pushHandler(new FirePHPHandler());
   $flog->pushHandler(new BrowserConsoleHandler()); // Ha no more jealous to JS browser log !
-  // $blog->pushHandler(new FirePHPHandler());
-
-  // Start logger
-  $flog->info('Monolog online');
-  // $blog->debug('Back Logger is Online SAFE n SOUND');
+  $flog->pushHandler(new StreamHandler("../logs/app.log"));
 ?>
