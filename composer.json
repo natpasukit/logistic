@@ -1,0 +1,12 @@
+{
+    "name": "natpalt/logistic",
+    "authors": [
+        {
+            "name": "Natpaphon Sukitpaneenit",
+            "email": "natpasukit@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.23"
+    }
+}

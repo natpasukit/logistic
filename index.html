@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Logistic Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+  <link href="/public/css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class ="background-wrap">
+    <video id="video-bg-elem" preload="auto" autoplay loop muted>
+      <source src="/public/vid/index.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </source>
+    </video>
+  </div>
+  <div class="content">
+    <div class="flex-center position-ref full-height">
+      <div class="top-right links">
+        <c class="login_info"></c>
+        <a href="/views/loginpage.php" class="login_button">Login</a>
+        <a href="/php/authen_logout.php" class="logout_button">Logout</a>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="title m-b-md">
+        Land truck Decision assistance Demo
+      </div>
+      <div class="links">
+        <a href="/pages/redirectPage.php">Logistic usage</a>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/public/js/jquery-3.2.1.min.js"></script>
+<script>
+$.ajax({
+    type: "GET",
+    url: "./php/authen_user_check.php",
+    dataType: 'json',
+    cache: false,
+    success: function(data) {
+        var isLogin = data.isLogin,
+            userName = data.user_name;
+        if(isLogin == true){
+          $('.login_button').hide();
+          $('.logout_button').show();
+          $('.login_info').text('Welcome user : ' + userName);
+        }else{
+          $('.login_button').show();
+          $('.logout_button').hide();
+          $('.login_info').text('Welcome : Guest');
+        }
+    }
+});
+</script>
+</html>
