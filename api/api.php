@@ -46,7 +46,7 @@ $app->get('/', function (Request $request, Response $response) {
 
 // Depot API
 $app->get('/depot' , function (Request $request , Response $response){
-  $query = $this->db->prepare("SELECT * FROM depot");
+  $query = $this->db->prepare("SELECT * FROM depot limit 20");
   $query->execute();
   $result = $query->fetchAll();
   return $response->withJson($result); // WithJson is the slimframework way to return JSON
@@ -95,7 +95,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
 // Package API
  $app->get('/pkg',function(Request $request, Response $response){
-   $query = $this->db->prepare("SELECT * FROM package");
+   $query = $this->db->prepare("SELECT * FROM package limit 20");
    $query->execute();
    $result = $query->fetchAll();
    return $response->withJson($result);
@@ -107,6 +107,26 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
    $query->execute();
    $result = $query->fetchAll();
    return $response->withJson($result);
+ });
+
+ $app->get('/pkg/pages/{page}',function(Request $request, Response $response){
+   $pkgPage = $request->getAttribute('page');
+   $offset = ($pkgPage - 1)*20 ;
+   if($offset < 1){
+     $offset=1;
+   }
+   $row_count = 20;
+   $query = $this->db->prepare("SELECT * FROM package LIMIT $row_count OFFSET $offset;");
+   $query->execute();
+   $result = $query->fetchAll();
+   return $response->withJson($result);
+ });
+
+ $app->get('/pkg/count/',function(Request $request, Response $response){
+   $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM package");
+   $query->execute();
+   $row = $query->fetch();
+   return $row['total_rows'];
  });
 
   $app->get('/pkg/search/{name}',function(Request $request, Response $response){
@@ -151,7 +171,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
    // Car Type API
    $app->get('/cartype' , function (Request $request , Response $response){
-     $query = $this->db->prepare("SELECT * FROM cartype");
+     $query = $this->db->prepare("SELECT * FROM cartype limit 20");
      $query->execute();
      $result = $query->fetchAll();
      return $response->withJson($result);
@@ -164,6 +184,27 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
      $result = $query->fetchAll();
      return $response->withJson($result);
    });
+
+   $app->get('/cartype/pages/{page}',function(Request $request, Response $response){
+     $page = $request->getAttribute('page');
+     $offset = ($page - 1)*20 ;
+     if($offset < 1){
+       $offset=1;
+     }
+     $row_count = 20;
+     $query = $this->db->prepare("SELECT * FROM cartype LIMIT $row_count OFFSET $offset;");
+     $query->execute();
+     $result = $query->fetchAll();
+     return $response->withJson($result);
+   });
+
+   $app->get('/cartype/count/',function(Request $request, Response $response){
+     $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM cartype");
+     $query->execute();
+     $row = $query->fetch();
+     return $row['total_rows'];
+   });
+
    $app->get('/cartype/search/{name}', function (Request $request, Response $response) {
      $carTypeName = $request->getAttribute('name');
      $query = $this->db->prepare("SELECT * FROM `cartype` WHERE carTypeName LIKE '%$carTypeName%' ORDER BY carTypeName;");
@@ -206,7 +247,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
     // customer API
     $app->get('/customer' , function (Request $request , Response $response){
-      $query = $this->db->prepare("SELECT * FROM customer");
+      $query = $this->db->prepare("SELECT * FROM customer limit 20");
       $query->execute();
       $result = $query->fetchAll();
       return $response->withJson($result);
@@ -219,6 +260,27 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
       $result = $query->fetchAll();
       return $response->withJson($result);
     });
+
+    $app->get('/customer/pages/{page}',function(Request $request, Response $response){
+      $page = $request->getAttribute('page');
+      $offset = ($page - 1)*20 ;
+      if($offset < 1){
+        $offset=1;
+      }
+      $row_count = 20;
+      $query = $this->db->prepare("SELECT * FROM customer LIMIT $row_count OFFSET $offset;");
+      $query->execute();
+      $result = $query->fetchAll();
+      return $response->withJson($result);
+    });
+
+    $app->get('/customer/count/',function(Request $request, Response $response){
+      $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM customer");
+      $query->execute();
+      $row = $query->fetch();
+      return $row['total_rows'];
+    });
+
     $app->get('/customer/search/{name}', function (Request $request, Response $response) {
       $customerName = $request->getAttribute('name');
       $query = $this->db->prepare("SELECT * FROM `customer` WHERE customerName LIKE '%$customerName%' ORDER BY customerName;");
@@ -257,7 +319,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
      // car API
      $app->get('/car' , function (Request $request , Response $response){
-       $query = $this->db->prepare("SELECT * FROM car");
+       $query = $this->db->prepare("SELECT * FROM car limit 20");
        $query->execute();
        $result = $query->fetchAll();
        return $response->withJson($result);
@@ -270,6 +332,27 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
        $result = $query->fetchAll();
        return $response->withJson($result);
      });
+
+     $app->get('/car/pages/{page}',function(Request $request, Response $response){
+       $page = $request->getAttribute('page');
+       $offset = ($page - 1)*20 ;
+       if($offset < 1){
+         $offset=1;
+       }
+       $row_count = 20;
+       $query = $this->db->prepare("SELECT * FROM car LIMIT $row_count OFFSET $offset;");
+       $query->execute();
+       $result = $query->fetchAll();
+       return $response->withJson($result);
+     });
+
+     $app->get('/car/count/',function(Request $request, Response $response){
+       $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM car");
+       $query->execute();
+       $row = $query->fetch();
+       return $row['total_rows'];
+     });
+
      $app->get('/car/search/{name}', function (Request $request, Response $response) {
        $carName = $request->getAttribute('name');
        $query = $this->db->prepare("SELECT * FROM `car` WHERE carName LIKE '%$carName%' ORDER BY carName;");
@@ -306,7 +389,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
       // route API
       $app->get('/route' , function (Request $request , Response $response){
-        $query = $this->db->prepare("SELECT * FROM route");
+        $query = $this->db->prepare("SELECT * FROM route limit 20");
         $query->execute();
         $result = $query->fetchAll();
         return $response->withJson($result);
@@ -318,6 +401,25 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
         $query->execute();
         $result = $query->fetchAll();
         return $response->withJson($result);
+      });
+      $app->get('/route/pages/{page}',function(Request $request, Response $response){
+        $page = $request->getAttribute('page');
+        $offset = ($page - 1)*20 ;
+        if($offset < 1){
+          $offset=1;
+        }
+        $row_count = 20;
+        $query = $this->db->prepare("SELECT * FROM route LIMIT $row_count OFFSET $offset;");
+        $query->execute();
+        $result = $query->fetchAll();
+        return $response->withJson($result);
+      });
+
+      $app->get('/route/count/',function(Request $request, Response $response){
+        $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM route");
+        $query->execute();
+        $row = $query->fetch();
+        return $row['total_rows'];
       });
 
       $app->post('/route' , function(Request $request, Response $response){
@@ -348,7 +450,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
        // transaction API
        $app->get('/transaction' , function (Request $request , Response $response){
-         $query = $this->db->prepare("SELECT * FROM transaction");
+         $query = $this->db->prepare("SELECT * FROM transaction limit 20");
          $query->execute();
          $result = $query->fetchAll();
          return $response->withJson($result);
@@ -360,6 +462,25 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
          $query->execute();
          $result = $query->fetchAll();
          return $response->withJson($result);
+       });
+       $app->get('/transaction/pages/{page}',function(Request $request, Response $response){
+         $page = $request->getAttribute('page');
+         $offset = ($page - 1)*20 ;
+         if($offset < 1){
+           $offset=1;
+         }
+         $row_count = 20;
+         $query = $this->db->prepare("SELECT * FROM transaction LIMIT $row_count OFFSET $offset;");
+         $query->execute();
+         $result = $query->fetchAll();
+         return $response->withJson($result);
+       });
+
+       $app->get('/transaction/count/',function(Request $request, Response $response){
+         $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM transaction");
+         $query->execute();
+         $row = $query->fetch();
+         return $row['total_rows'];
        });
 
        $app->post('/transaction' , function(Request $request, Response $response){
@@ -394,7 +515,7 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
 
         // tg good API
         $app->get('/tg' , function (Request $request , Response $response){
-          $query = $this->db->prepare("SELECT * FROM transactiongood");
+          $query = $this->db->prepare("SELECT * FROM transactiongood limit 20");
           $query->execute();
           $result = $query->fetchAll();
           return $response->withJson($result);
@@ -406,6 +527,26 @@ $app->put('/depot/{id}', function (Request $request, Response $response) {
           $query->execute();
           $result = $query->fetchAll();
           return $response->withJson($result);
+        });
+
+        $app->get('/tg/pages/{page}',function(Request $request, Response $response){
+          $page = $request->getAttribute('page');
+          $offset = ($page - 1)*20 ;
+          if($offset < 1){
+            $offset=1;
+          }
+          $row_count = 20;
+          $query = $this->db->prepare("SELECT * FROM transactiongood LIMIT $row_count OFFSET $offset;");
+          $query->execute();
+          $result = $query->fetchAll();
+          return $response->withJson($result);
+        });
+
+        $app->get('/tg/count/',function(Request $request, Response $response){
+          $query = $this->db->prepare("SELECT COUNT(*) as total_rows FROM transactiongood");
+          $query->execute();
+          $row = $query->fetch();
+          return $row['total_rows'];
         });
 
         $app->post('/tg' , function(Request $request, Response $response){

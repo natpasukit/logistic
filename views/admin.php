@@ -2,94 +2,181 @@
   require(__DIR__ . '/../php/logistic_global.php');
   require(__DIR__ . '/../php/authen_redirect.php');
 ?>
-<!DOCTYPE html>
 <html lang="en">
-<?php include(__DIR__ . '/../component/header.php'); // Header component include?>
-<body class="nav-md">
-  <div class="container body">
-    <div class="main_container">
-      <div class="col-md-3 left_col">
-        <div class="left_col scroll-view">
-          <div class="navbar nav_title" style="border: 0;">
-            <a href="/../pages/adminIndex.php" class="site_title"><i class="fa fa-paw"></i> <span>Demo</span></a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Logistic demo</title>
+  <!-- Core css -->
+  <link href="/../public/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/../public/css/dashboard.css" rel="stylesheet">
+</head>
+  <body>
+    <?php require_once(__DIR__ . '/../component/menu_top.php');?>
+    <div class="container-fluid">
+      <div class="row">
+        <?php require_once(__DIR__ . '/../component/menu_left.php');?>
+        <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+          <h1>Dashboard</h1>
+
+          <section class="row text-center placeholders">
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <div class="text-muted">Something else</div>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </section>
+
+          <h2>Section title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                  <th>Header</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>ipsum</td>
+                  <td>dolor</td>
+                  <td>sit</td>
+                </tr>
+                <tr>
+                  <td>1,002</td>
+                  <td>amet</td>
+                  <td>consectetur</td>
+                  <td>adipiscing</td>
+                  <td>elit</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>Integer</td>
+                  <td>nec</td>
+                  <td>odio</td>
+                  <td>Praesent</td>
+                </tr>
+                <tr>
+                  <td>1,003</td>
+                  <td>libero</td>
+                  <td>Sed</td>
+                  <td>cursus</td>
+                  <td>ante</td>
+                </tr>
+                <tr>
+                  <td>1,004</td>
+                  <td>dapibus</td>
+                  <td>diam</td>
+                  <td>Sed</td>
+                  <td>nisi</td>
+                </tr>
+                <tr>
+                  <td>1,005</td>
+                  <td>Nulla</td>
+                  <td>quis</td>
+                  <td>sem</td>
+                  <td>at</td>
+                </tr>
+                <tr>
+                  <td>1,006</td>
+                  <td>nibh</td>
+                  <td>elementum</td>
+                  <td>imperdiet</td>
+                  <td>Duis</td>
+                </tr>
+                <tr>
+                  <td>1,007</td>
+                  <td>sagittis</td>
+                  <td>ipsum</td>
+                  <td>Praesent</td>
+                  <td>mauris</td>
+                </tr>
+                <tr>
+                  <td>1,008</td>
+                  <td>Fusce</td>
+                  <td>nec</td>
+                  <td>tellus</td>
+                  <td>sed</td>
+                </tr>
+                <tr>
+                  <td>1,009</td>
+                  <td>augue</td>
+                  <td>semper</td>
+                  <td>porta</td>
+                  <td>Mauris</td>
+                </tr>
+                <tr>
+                  <td>1,010</td>
+                  <td>massa</td>
+                  <td>Vestibulum</td>
+                  <td>lacinia</td>
+                  <td>arcu</td>
+                </tr>
+                <tr>
+                  <td>1,011</td>
+                  <td>eget</td>
+                  <td>nulla</td>
+                  <td>Class</td>
+                  <td>aptent</td>
+                </tr>
+                <tr>
+                  <td>1,012</td>
+                  <td>taciti</td>
+                  <td>sociosqu</td>
+                  <td>ad</td>
+                  <td>litora</td>
+                </tr>
+                <tr>
+                  <td>1,013</td>
+                  <td>torquent</td>
+                  <td>per</td>
+                  <td>conubia</td>
+                  <td>nostra</td>
+                </tr>
+                <tr>
+                  <td>1,014</td>
+                  <td>per</td>
+                  <td>inceptos</td>
+                  <td>himenaeos</td>
+                  <td>Curabitur</td>
+                </tr>
+                <tr>
+                  <td>1,015</td>
+                  <td>sodales</td>
+                  <td>ligula</td>
+                  <td>in</td>
+                  <td>libero</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <!-- sidebar menu -->
-          <?php include '/../component/sideMenu.php';
-          include '/../component/sidefootMenu.php';?>
-          <!-- /menu footer buttons -->
-          <?php include '/../component/sidefootMenu.php';?>
-          <!-- /menu footer buttons -->
-        </div>
+        </main>
       </div>
-      <!-- top navigation -->
-      <?php include '../component/topMenu.php';?>
-      <div class="right_col" role="main">
-        <div class="">
-          <div class="row top_tiles">
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div class="tile-stats">
-                <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                <div class="count"></div>
-                <h3>Total Transaction</h3>
-                <p>all transaction</p>
-              </div>
-            </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div class="tile-stats">
-                <div class="icon"><i class="fa fa-comments-o"></i></div>
-                <div class="count"></div>
-                <h3>Wait for info</h3>
-                <p>Wait for info transaction</p>
-              </div>
-            </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div class="tile-stats">
-                <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                <div class="count"></div>
-                <h3>On route</h3>
-                <p>On route , wait for deploy</p>
-              </div>
-            </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div class="tile-stats">
-                <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                <div class="count"> </div>
-                <h3>Total complete</h3>
-                <p>Total complete transaction</p>
-              </div>
-            </div>
-          </div>
-      <div class="mid_col" role="main">
-        <div class="">
-        <!-- small title -->
-          <div class="page-title">
-            <div class="title_left">
-              <h3>Heat Map data<small> Base on all transaction</small></h3>
-            </div>
-            <div id="map"></div>
-            <script src="/../public/js/heatmapdata.js"></script>
-            <script type="text/javascript">
-              var map = L.map('map').setView([18.783629,99.001751], 14);
-              var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-                  }).addTo(map);
-              addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-              var heat = L.heatLayer(addressPoints, {radius: 50}).addTo(map);
-          </script>
-          </div>
-          <!--/small title-->
-          <div class="clearfix"></div>
-        </div>
-      </div>
-        </div>
-      </div>
-      <footer>
-        <div class="pull-right">
-          Logistic Advisor <a href="http://natpaphon.arg.in.th">Natpa wwww</a>
-        </div>
-        <div class="clearfix"></div>
-      </footer>
     </div>
-  </div>
-</body>
+    <!-- ================================================== -->
+    <script src="/../public/js/jquery-3.2.1.min.js"></script>
+    <script src="/../public/js/popper.min.js"></script>
+    <script src="/../public/js/bootstrap.min.js"></script>
+  </body>
 </html>
